@@ -14,6 +14,20 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  fetchData();
+})
+
+const fetchData = async () =>{
+  try{
+    const response = await fetch('http://localhost:8080/api/cards/')
+    const data = await response.json()
+    console.log(data)
+  }catch(error){
+    console.log(error)
+  }
+}
+
 export default function ComplexGrid() {
   return (
     <Paper

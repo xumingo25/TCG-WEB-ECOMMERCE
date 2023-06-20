@@ -12,19 +12,7 @@ function Item(props) {
   );
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetchData();
-})
 
-const fetchData = async () =>{
-  try{
-    const response = await fetch('http://localhost:8080/api/cards/')
-    const data = await response.json()
-    console.log(data)
-  }catch(error){
-    console.log(error)
-  }
-}
 
 
 
