@@ -15,18 +15,28 @@ const Img = styled('img')({
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetchData();
+  const random = getRandomInt(6,1000)
+  fetchData(random);
 })
 
-const fetchData = async () =>{
+const getRandomInt = (min, max)  => {
+  return Math.floor(Math.random() * (max - min)+ min)
+}
+
+const fetchData = async (id) =>{
   try{
-    const response = await fetch('http://localhost:8080/api/cards/')
+    const response = await fetch(`http://localhost:8080/api/cards/${id}`)
     const data = await response.json()
-    console.log(data)
+    pintarCard(data)
   }catch(error){
     console.log(error)
   }
 }
+
+const pintarCard =  (carta) => {
+  console.log(carta)
+}
+
 
 export default function ComplexGrid() {
   return (
