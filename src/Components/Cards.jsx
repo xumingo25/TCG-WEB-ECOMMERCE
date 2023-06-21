@@ -41,7 +41,7 @@ export default function AlignContent() {
         }}
       >
         {/* Bucle para mostrar el componente diez veces */}
-        {[...Array(12)].map((_, index) => (
+        {[...Array(8)].map((_, index) => (
                 <Item><Card></Card></Item>
               ))}
       </Box>
