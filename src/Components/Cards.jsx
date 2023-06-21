@@ -12,10 +12,6 @@ function Item(props) {
   );
 }
 
-
-
-
-
 Item.propTypes = {
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
@@ -40,7 +36,7 @@ export default function AlignContent() {
           bgcolor: 'background.paper'
         }}
       >
-        {/* Bucle para mostrar el componente diez veces */}
+        {/* Bucle para mostrar el componente ocho veces */}
         {[...Array(8)].map((_, index) => (
                 <Item><Card></Card></Item>
               ))}

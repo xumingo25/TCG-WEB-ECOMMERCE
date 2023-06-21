@@ -1,5 +1,4 @@
 import Container from "@mui/material/Container"
-import Grid from "./Components/Grid"
 import CardList from "./Components/CardList"
 export default function App() {
   return (
