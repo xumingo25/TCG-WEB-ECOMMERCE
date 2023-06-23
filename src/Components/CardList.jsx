@@ -62,9 +62,9 @@ const CardList = () => {
 
   return (
     <div>
-      <Grid container spacing={2} justifyContent="left">
+      <Grid container spacing={2}>
         {cartas.slice(startIndex, startIndex + 8).map((carta) => (
-          <Card key={carta.id} carta={carta} />
+          <Card key={carta.id} carta={carta} item xs={12} sm={6} md={4} lg={3}/>
         ))}
       </Grid>
 
