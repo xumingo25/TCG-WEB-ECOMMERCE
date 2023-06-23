@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import ButtonBase from '@mui/material/ButtonBase';
-import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
@@ -30,46 +25,67 @@ const CardList = () => {
   };
 
   const handleNext = () => {
-    setStartIndex((prevIndex) => prevIndex + 12);
+    setStartIndex((prevIndex) => prevIndex + 8);
   };
 
   const handlePrevious = () => {
-    setStartIndex((prevIndex) => prevIndex - 12);
+    setStartIndex((prevIndex) => prevIndex - 8);
   };
+
+  const NavigationContainer = styled('div')({
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'relative',
+  });
+
+  const StyledIconButton = styled(IconButton)(({ theme }) => ({
+    width: '80px',
+    height: '80px',
+    backgroundColor: 'green',
+    color: theme.palette.common.white,
+    '&:hover': {
+      backgroundColor: 'darkred',
+    },
+  }));
+
+  const LeftIconButton = styled(StyledIconButton)({
+    position: 'absolute',
+    bottom: '24rem',
+    left: '0%',
+  });
+
+  const RightIconButton = styled(StyledIconButton)({
+    position: 'absolute',
+    bottom: '24rem',
+    right: '0%',
+  });
 
   return (
     <div>
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={2} justifyContent="left">
         {cartas.slice(startIndex, startIndex + 8).map((carta) => (
           <Card key={carta.id} carta={carta} />
         ))}
       </Grid>
 
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: '1rem',
-        }}
-      >
-        <IconButton
+      <NavigationContainer>
+        <LeftIconButton
           color="primary"
           aria-label="Atrás"
           onClick={handlePrevious}
           disabled={startIndex === 0}
         >
           <KeyboardArrowLeft />
-        </IconButton>
-        <IconButton
+        </LeftIconButton>
+        <RightIconButton
           color="primary"
           aria-label="Siguiente"
           onClick={handleNext}
           disabled={startIndex + 8 >= cartas.length}
         >
           <KeyboardArrowRight />
-        </IconButton>
-      </div>
+        </RightIconButton>
+      </NavigationContainer>
     </div>
   );
 };
