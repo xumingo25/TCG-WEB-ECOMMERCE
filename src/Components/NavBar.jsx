@@ -10,6 +10,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import { Link } from "react-router-dom";
+
 
 
 
@@ -65,6 +67,7 @@ export default function ButtonAppBar() {
       <AppBar> 
         <Toolbar>
         <Typography sx={{ flexGrow: 1,width:'29%', minWidth: '100px'}}>
+        <Link to="/">
           <IconButton
             size="large"
             edge="start"
@@ -73,7 +76,7 @@ export default function ButtonAppBar() {
           >
             <img src={logo} height={50} width={50} />
           </IconButton>
-          
+          </Link>
           </Typography>
           <Typography sx={{ flexGrow: 1,width:'30%' }}>
           <Search>
@@ -95,8 +98,10 @@ export default function ButtonAppBar() {
           <IconButton>Iniciar Sesión
           </IconButton>
           </Typography>
+          <Link to="/checkout-page">
           <IconButton><Badge badgeContent={2} color="secondary"><ShoppingCartIcon fontSize="large"></ShoppingCartIcon></Badge>
           </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>

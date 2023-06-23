@@ -5,7 +5,6 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import pokemon from "../assets/pokemon.jpg";
 
 export default function Footer() {
   return (
