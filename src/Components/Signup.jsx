@@ -42,8 +42,8 @@ export default function SignUp() {
   const navigate = useNavigate();
   
   const signup = (e) => {
-    e.preventDefault();
-      createUserWithEmailAndPassword(auth, email, password)
+    e.preventDefault(); //evitar que refresque
+    createUserWithEmailAndPassword(auth, email, password) //se usa objeto para auth via firebise
       .then((userCredential) => {
        console.log(userCredential)
       // Signed in

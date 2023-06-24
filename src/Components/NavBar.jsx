@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,7 +12,9 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
-
+import { actionTypes } from "../reducer";
+import { useNavigate } from "react-router-dom"
+import { auth } from "../firebase";
 
 
 
@@ -61,8 +63,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function ButtonAppBar() {
 
+  
   const [{ basket, user }, dispatch] = useStateValue();
+  const navigate = useNavigate();
 
+  const handleAuth = () => {
+    if (user) {
+      auth.signOut();
+      dispatch({
+        type: actionTypes.EMPTY_BASKET,
+        basket: [],
+      });
+      dispatch({
+        type: actionTypes.SET_USER,
+        user: null,
+      });
+      navigate("/");
+    }
+  }
 
   return (
     <Box sx={{ flexGrow: 2, marginTop: '3.3%' }}>
@@ -92,15 +110,14 @@ export default function ButtonAppBar() {
             </Search>
           </Typography>
           <Typography sx={{ padding: 2, width: '20%', textAlign: 'right' }}>
-
-            Hello Guest
-
+            Hello {user ? user.email : "Guest"}
           </Typography>
           <Typography sx={{ padding: 2 }}>
 
-            <Link to={!user && "/signin"}>
-              <IconButton>Iniciar Sesión
-              </IconButton>
+          <Link to={!user && "/signin"}>
+            <IconButton variant="outlined" onClick={handleAuth}>
+              <strong>{user ? "Sign Out" : "Sign In"}</strong> 
+            </IconButton>
             </Link>
           </Typography>
           <Link to="/checkout-page">
