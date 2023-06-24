@@ -6,6 +6,10 @@ import Button from '@mui/material/Button';
 import ButtonBase from '@mui/material/ButtonBase';
 import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
 import Typography from '@mui/material/Typography';
+import { useStateValue } from '../StateProvider';
+import { actionTypes } from "../reducer";
+import accounting from "accounting"
+
 
 const Img = styled('img')({
   margin: 'auto',
@@ -14,7 +18,23 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
-const Card = ({ carta }) => {
+export default function Card({carta : {id, nombre, codigo, rareza,imagen}}) {
+
+  const [{ basket }, dispatch] = useStateValue();
+
+  const addToBasket = () => {
+    dispatch({
+      type: actionTypes.ADD_TO_BASKET,
+      item: {
+         id,
+         nombre,
+         codigo,
+         rareza,
+         imagen,
+      },
+    });
+  };
+
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Paper
@@ -30,23 +50,23 @@ const Card = ({ carta }) => {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase sx={{ height: '100%' }}>
-              <Img alt="complex" src={carta.imagen} className="imgn" />
+              <Img  src={imagen}  />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  <strong>{carta.nombre}</strong>
+                  <strong>{nombre}</strong>
                 </Typography>
               </Grid>
             </Grid>
             <Grid item>
               <Typography variant="subtitle1" component="div">
-                <strong>$8.000</strong>
+                <strong>{accounting.formatMoney({id},"$")}</strong>
               </Typography>
             </Grid>
-            <Button variant="contained" endIcon={<AddShoppingCartSharpIcon />}>
+            <Button onClick={addToBasket} variant="contained" endIcon={<AddShoppingCartSharpIcon />}>
               Agregar al carrito
             </Button>
           </Grid>
@@ -55,5 +75,3 @@ const Card = ({ carta }) => {
     </Grid>
   );
 };
-
-export default Card;
