@@ -18,7 +18,7 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
-export default function Card({carta : {id, nombre, codigo, rareza,imagen}}) {
+export default function Card({carta : {id, nombre, codigo, rareza,imagen, precio}}) {
 
   const [{ basket }, dispatch] = useStateValue();
 
@@ -31,6 +31,7 @@ export default function Card({carta : {id, nombre, codigo, rareza,imagen}}) {
          codigo,
          rareza,
          imagen,
+         precio: Number(id),
       },
     });
   };
@@ -63,7 +64,7 @@ export default function Card({carta : {id, nombre, codigo, rareza,imagen}}) {
             </Grid>
             <Grid item>
               <Typography variant="subtitle1" component="div">
-                <strong>{accounting.formatMoney({id},"$")}</strong>
+                <strong>{accounting.formatMoney(Number(id),"$")}</strong>
               </Typography>
             </Grid>
             <Button onClick={addToBasket} variant="contained" endIcon={<AddShoppingCartSharpIcon />}>
