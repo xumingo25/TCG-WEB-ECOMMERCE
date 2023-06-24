@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.jsx'
-import { BrowserRouter } from 'react-router-dom';
 import { CssBaseline } from "@mui/material";
 import { StateProvider } from './StateProvider';
 import reducer, { initialState } from './reducer';
@@ -15,8 +14,8 @@ import '@fontsource/roboto/700.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CssBaseline />
     <StateProvider initialState={initialState} reducer={reducer}>
+    <CssBaseline />
       <App />
     </StateProvider>
   </React.StrictMode>,

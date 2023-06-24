@@ -11,6 +11,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { Link } from "react-router-dom";
+import { useStateValue } from "../StateProvider";
+
 
 
 
@@ -59,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function ButtonAppBar() {
 
-
+  const [{ basket , user}, dispatch] = useStateValue();
 
   
   return (
@@ -99,7 +101,7 @@ export default function ButtonAppBar() {
           </IconButton>
           </Typography>
           <Link to="/checkout-page">
-          <IconButton><Badge badgeContent={2} color="secondary"><ShoppingCartIcon fontSize="large"></ShoppingCartIcon></Badge>
+          <IconButton><Badge badgeContent={basket?.length} color="secondary"><ShoppingCartIcon fontSize="large"></ShoppingCartIcon></Badge>
           </IconButton>
           </Link>
         </Toolbar>

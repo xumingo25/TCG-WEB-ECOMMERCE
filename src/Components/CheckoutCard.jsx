@@ -7,6 +7,11 @@ import ButtonBase from '@mui/material/ButtonBase';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
+import { useStateValue } from "../StateProvider";
+import { accounting } from 'accounting';
+import { actionTypes } from "../reducer";
+
+
 
 const Img = styled('img')({
   margin: 'auto',
@@ -61,6 +66,15 @@ const BootstrapButton = styled(Button)({
 
 
 const Card = ({ carta }) => {
+  const [{ basket }, dispatch] = useStateValue();
+
+  const removeItem = () => dispatch({
+    type : actionTypes.REMOVE_ITEM,
+    id: carta.id,
+
+
+  })
+
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Paper
@@ -89,10 +103,10 @@ const Card = ({ carta }) => {
             </Grid>
             <Grid item>
               <Typography variant="subtitle1" component="div">
-                <strong>$8.000</strong>
+                <strong>{accounting.formatMoney(carta.precio,"$")}</strong>
               </Typography>
             </Grid>
-            <ColorButton variant="contained">
+            <ColorButton variant="contained" onClick={removeItem}>
             <RemoveShoppingCartIcon />
               Quitar del carrito
             </ColorButton>
