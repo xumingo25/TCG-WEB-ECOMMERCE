@@ -6,6 +6,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import CheckoutCard from './CheckoutCard';
 import Typography from '@mui/material/Typography';
+import Total from './Total';
 
 const CardList = () => {
   const [cartas, setCartas] = useState([]);
@@ -105,7 +106,7 @@ const CardList = () => {
         </Grid>
         <Grid item xs={12} sm={4} md={3}>
           <Typography align='center' gutterBottom variant='h4'>
-            100
+            <Total></Total>
           </Typography>
         </Grid>
       </Grid>
