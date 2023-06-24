@@ -61,48 +61,51 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function ButtonAppBar() {
 
-  const [{ basket , user}, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
-  
+
   return (
-    <Box sx={{ flexGrow: 2,marginTop: '3.3%'}}>
-      <AppBar> 
+    <Box sx={{ flexGrow: 2, marginTop: '3.3%' }}>
+      <AppBar>
         <Toolbar>
-        <Typography sx={{ flexGrow: 1,width:'29%', minWidth: '100px'}}>
-        <Link to="/">
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-          >
-            <img src={logo} height={50} width={50} />
-          </IconButton>
-          </Link>
+          <Typography sx={{ flexGrow: 1, width: '29%', minWidth: '100px' }}>
+            <Link to="/">
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+              >
+                <img src={logo} height={50} width={50} />
+              </IconButton>
+            </Link>
           </Typography>
-          <Typography sx={{ flexGrow: 1,width:'30%' }}>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          <Typography sx={{ flexGrow: 1, width: '30%' }}>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
           </Typography>
-          <Typography sx={{padding: 2, width:'20%', textAlign:'right'}}>
-         
-            Hello Guest    
-           
+          <Typography sx={{ padding: 2, width: '20%', textAlign: 'right' }}>
+
+            Hello Guest
+
           </Typography>
-          <Typography sx={{padding: 2}}>
-          <IconButton>Iniciar Sesión
-          </IconButton>
+          <Typography sx={{ padding: 2 }}>
+
+            <Link to={!user && "/signin"}>
+              <IconButton>Iniciar Sesión
+              </IconButton>
+            </Link>
           </Typography>
           <Link to="/checkout-page">
-          <IconButton><Badge badgeContent={basket?.length} color="secondary"><ShoppingCartIcon fontSize="large"></ShoppingCartIcon></Badge>
-          </IconButton>
+            <IconButton><Badge badgeContent={basket?.length} color="secondary"><ShoppingCartIcon fontSize="large"></ShoppingCartIcon></Badge>
+            </IconButton>
           </Link>
         </Toolbar>
       </AppBar>
