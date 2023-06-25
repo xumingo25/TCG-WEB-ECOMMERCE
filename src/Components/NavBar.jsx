@@ -13,7 +13,7 @@ import InputBase from '@mui/material/InputBase';
 import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import { actionTypes } from "../reducer";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
 
@@ -78,7 +78,7 @@ export default function ButtonAppBar() {
         type: actionTypes.SET_USER,
         user: null,
       });
-      navigate("/");
+      navigate("/")
     }
   }
 

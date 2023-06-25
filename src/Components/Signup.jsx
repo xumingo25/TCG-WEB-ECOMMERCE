@@ -45,7 +45,7 @@ export default function SignUp() {
     e.preventDefault(); //evitar que refresque
     createUserWithEmailAndPassword(auth, email, password) //se usa objeto para auth via firebise
       .then((userCredential) => {
-       console.log(userCredential)
+       //console.log(userCredential)
       // Signed in
        //const user = userCredential.user;
        navigate("/");

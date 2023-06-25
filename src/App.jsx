@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import Container from "@mui/material/Container"
 import CardList from "./Components/CardList"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./Components/NavBar"
 import Footer from "./Components/Footer"
 import CheckoutPage from "./Components/CheckoutPage"
@@ -11,6 +10,8 @@ import { actionTypes } from "./reducer";
 import Signin from './Components/Signin';
 import Signup from './Components/Signup';
 import { auth } from "./firebase";
+import Checkout from "./Components/CheckoutForm/Checkout";
+
 
 
 
@@ -18,10 +19,10 @@ export default function App() {
 
   const [{ user }, dispatch] = useStateValue();
 
-  useEffect(()=>{
-    auth.onAuthStateChanged((authUser) =>{
-      console.log(authUser);
-      if(authUser){
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      //console.log(authUser);
+      if (authUser) {
         dispatch({
           type: actionTypes.SET_USER,
           user: authUser,
@@ -33,7 +34,9 @@ export default function App() {
         });
       }
     });
-  },[]);
+  }, []);
+
+  
 
   return (
     <Router>
@@ -44,8 +47,10 @@ export default function App() {
           <Route path='/signin' caseSensitive={false} element={<Signin />} />
           <Route path='/signup' caseSensitive={false} element={<Signup />} />
           <Route path='/' caseSensitive={false} element={<CardList />} />
+          <Route path='/checkout' caseSensitive={false} element={<Checkout />} />
+
        </Routes>
-       <Footer></Footer>
+       <Footer/>
     </Box>
     </Router>
   )
