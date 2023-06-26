@@ -16,7 +16,7 @@ const CardList = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/cards');
+      const response = await fetch('https://nervous-error-production.up.railway.app/api/cards');
       const data = await response.json();
       setCartas(data);
     } catch (error) {
