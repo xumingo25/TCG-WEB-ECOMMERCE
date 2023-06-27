@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import '../Grid.css'; // Archivo CSS para estilizar el grid
+
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
@@ -61,12 +64,15 @@ const CardList = () => {
   });
 
   return (
-    <div>
-      <Grid container spacing={2}>
-        {cartas.slice(startIndex, startIndex + 8).map((carta) => (
-          <Card key={carta.id} carta={carta} item xs={12} sm={6} md={4} lg={3}/>
-        ))}
-      </Grid>
+    <Box>
+     
+      <div className="grid-container">
+      {cartas.slice(startIndex, startIndex + 12).map((carta) => (
+        <div key={carta.id} className="card">
+           <Card key={carta.id} carta={carta} item xs={12} sm={6} md={4} lg={3}/>
+        </div>
+      ))}
+    </div>
 
       <NavigationContainer>
         <LeftIconButton
@@ -86,7 +92,7 @@ const CardList = () => {
           <KeyboardArrowRight />
         </RightIconButton>
       </NavigationContainer>
-    </div>
+    </Box>
   );
 };
 

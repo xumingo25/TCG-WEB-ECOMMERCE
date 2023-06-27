@@ -1,0 +1,26 @@
+.grid-container {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  @media (max-width: 600px) {
+    /* Para pantallas más pequeñas (ej. celular) */
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+    }
+  }
+  
+  @media (min-width: 601px) {
+    /* Para pantallas más grandes */
+    .grid-container {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+  }

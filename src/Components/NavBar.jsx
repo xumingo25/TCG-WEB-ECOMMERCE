@@ -83,10 +83,10 @@ export default function ButtonAppBar() {
   }
 
   return (
-    <Box sx={{ flexGrow: 2, marginTop: '3.3%' }}>
-      <AppBar>
+    <Box sx={{ flexGrow: 2, marginTop: '1%', height:75, paddingBottom:10, border:3}}>
+      <AppBar >
         <Toolbar>
-          <Typography sx={{ flexGrow: 1, width: '29%', minWidth: '100px' }}>
+          <Typography variant="div" sx={{ flexGrow: 1, width: '29%', minWidth: '100px' }}>
             <Link to="/">
               <IconButton
                 size="large"
@@ -98,7 +98,7 @@ export default function ButtonAppBar() {
               </IconButton>
             </Link>
           </Typography>
-          <Typography sx={{ flexGrow: 1, width: '30%' }}>
+          <Typography variant="div" sx={{ flexGrow: 1, width: '30%' }}>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />

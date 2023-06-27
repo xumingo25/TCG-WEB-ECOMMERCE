@@ -54,22 +54,12 @@ export default function Card({carta : {id, nombre, codigo, rareza,imagen, precio
               <Img  src={imagen}  />
             </ButtonBase>
           </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" component="div">
-                  <strong>{nombre}</strong>
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid item>
+          <Grid item xs={12} sm container display={'center'}>
+            <Grid>
               <Typography variant="subtitle1" component="div">
-                <strong>{accounting.formatMoney(Number(id),"$")}</strong>
+                <Button onClick={addToBasket} variant="contained" endIcon={<AddShoppingCartSharpIcon />}> {accounting.formatMoney(Number(id),"$")} </Button>
               </Typography>
             </Grid>
-            <Button onClick={addToBasket} variant="contained" endIcon={<AddShoppingCartSharpIcon />}>
-              Agregar al carrito
-            </Button>
           </Grid>
         </Grid>
       </Paper>
